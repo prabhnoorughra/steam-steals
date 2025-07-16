@@ -137,7 +137,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 50px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding-left: 20px;
 }
 
@@ -147,12 +147,23 @@ button:hover {
     
 }
 
+.option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .option:hover {
     cursor: pointer;
 }
 
 .option.active {
     color: yellow;
+}
+
+.option > img {
+    display: inline;
+    height: 20px;
 }
 
 
