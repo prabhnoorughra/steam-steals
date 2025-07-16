@@ -1,0 +1,491 @@
+#root {
+    display: grid;
+    grid-template-rows: 150px 1fr;
+    grid-template-columns: 250px 1fr;
+    --bar-height: 30px;
+    height: 100vh;
+    width: 100vw;
+    --bar-color: rgb(255, 255, 255);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.bg-video {
+    position: fixed;
+    z-index: 1;
+}
+
+/* Nav Bar */
+
+.navBar {
+    display: grid;
+    grid-template-rows: 100px;
+    grid-template-columns: 1fr 3fr 1fr;
+    padding-top: 30px;
+    justify-items: center;
+    align-items: center;
+    grid-column: 1 / -1;
+    background-color: rgb(163, 163, 163);
+    background-color: black;
+    color: white;
+}
+
+.logo {
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logo > img {
+    width: 80px;
+    height: auto;
+}
+
+.logoText {
+    font-size: 2.2rem;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.searchbar {
+    position: relative;
+    width: 40%;
+    height: var(--bar-height);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--bar-color);
+    border-radius: 7px;
+    z-index: 2;
+}
+
+.searchbar > input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: var(--bar-color);
+    padding-left: 10px;
+    border-radius: 7px;
+}
+
+.searchbtn {
+    justify-self: flex-end;
+}
+
+.searchbar > input:focus {
+    border: none;
+    outline: none;
+}
+
+.searchbtn > img {
+    height: var(--bar-height);
+    padding: 3px;
+}
+.searchbtn {
+    background-color: none;
+    background: none;
+    border: none;
+}
+
+.searchbtn > img:hover, .searchbtn:hover {
+    cursor: pointer;
+}
+
+.navButtons {
+    z-index: 2;
+    position: relative;
+    padding: 10px;
+    padding-right: 20px;
+}
+
+.navButtons > img {
+    height: 30px;
+    color: white;
+}
+
+.navButtons > img:hover {
+    cursor: pointer;
+}
+
+.itemCount {
+    position: absolute;
+    top: 0px;
+    right: 2px;
+    background-color: rgb(247, 255, 5);
+    color: black;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+/* Side Bar */
+
+.sideBar {
+    color: rgb(255, 255, 255);
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    font-size: 1.5rem;
+    padding-left: 20px;
+}
+
+.sideBar > div:first-child {
+    font-size: 2rem;
+    font-weight: 800;
+    
+}
+
+.option:hover {
+    cursor: pointer;
+}
+
+.option.active {
+    color: yellow;
+}
+
+
+/* Main Search */
+
+.searchResults {
+    background-color: rgb(0, 0, 0);
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    overflow: auto;
+    
+}
+
+.searchResults::-webkit-scrollbar         { width: 12px; }
+.searchResults::-webkit-scrollbar-track   { background: #000000; }
+.searchResults::-webkit-scrollbar-thumb   { background: #888; border-radius: 6px; }
+.searchResults::-webkit-scrollbar-thumb:hover { background: #555; }
+
+.card {
+    height: 700px;
+    width: 300px;
+    background-color: rgb(39, 39, 39);
+    overflow: auto;
+    scrollbar-width: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 445px 65px 50px minmax(125px, 1fr);
+    border-radius: 7px;
+}
+
+.card > img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.cardActions {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-top: 1px solid white;
+}
+
+.cardPrice {
+    margin-left: auto;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.cardAdd, .cardAdded {
+    font-size: 1.2rem;
+    width: 150px;
+    text-align: start;
+}
+
+.cardAdd {
+    border: none;
+    background-color: none;
+    background: none;
+    color: rgb(0, 183, 255);
+    padding: 0;
+}
+
+.cardAdd::after {
+    content: " ✚ "
+}
+
+.cardAdded {
+    color: rgb(13, 255, 0);
+}
+
+.cardAdded::after {
+    content: " ✅";
+}
+
+.cardPrice::before {
+    content: "$";
+}
+
+.cardName {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 800;
+    text-align: center;
+    padding: 15px;
+    padding-top: 0px;
+}
+
+.cardActions > button:hover {
+    cursor: pointer;
+}
+
+.cardSteamStats {
+    color: white;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1.2rem;
+}
+
+.cardRatings {
+    margin-left: auto;
+}
+
+.cardRating.great {
+    color: rgb(0, 255, 0);
+}
+
+.cardRating.good {
+    color: rgb(153, 255, 0);
+}
+
+.cardRating.mid {
+    color: yellow;
+}
+
+.cardRating.bad {
+    color: orange;
+}
+
+.cardRating.horrible {
+    color: red;
+}
+
+span.ratingLabel, .cardRatings {
+    color: rgb(201, 201, 201);
+}
+
+
+
+/* Cart Opening */
+.cartOverlay {
+  z-index: 2;
+  position: fixed;
+  top: 0; 
+  right: 0;
+  width: 100vw; 
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  /* pushes the sidebar to the left */
+  justify-content: flex-end;
+  align-items: stretch;
+}
+
+.cart-modal {
+  position: relative;
+  width: 400px;
+  background: #949494;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.2);
+  height: 100vh;
+}
+.cart-modal ul {
+  list-style: none;
+  padding: 0;
+  overflow-y: auto;
+  height: 87%;
+  scrollbar-width: none;
+  width: 100%;
+  align-self: center;
+  text-align: center;
+  padding-left: 10%;
+}
+
+.fullCart {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cartTitle {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.cartCard {
+    height: 400px;
+    width: 300px;
+    background-color: rgb(0, 123, 255);
+    overflow: auto;
+    scrollbar-width: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 245px 1fr 1.5fr;
+    margin-bottom: 15px;
+    border: 3px solid black;
+    border-radius: 7px;
+    position: relative;
+}
+
+.cartCardActions {
+    display: flex;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.cartCardName {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.cartCardName {
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+}
+
+.cartCard > img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid white;
+}
+
+.cartClose {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: none;
+    height: 35px;
+    width: 35px;
+    font-size: 1.6rem;
+}
+
+.removeCard {
+    border: none;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    font-size: 1.5rem;
+    text-shadow: 0px 0px 1px white;
+    text-align: center;
+    border: 1px solid white;
+    margin-left: auto;
+}
+
+.removeCard:hover {
+    background-color: red;
+}
+
+.emptyCart {
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+}
+
+.emptyText {
+    align-self: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.emptyTotal {
+    margin-top: auto;
+}
+
+.cartActions, .emptyTotal {
+    font-weight: 800;
+    margin-left: 15px;
+    font-size: 1.8rem;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+    margin-bottom: 15px;
+    color: black;
+}
+
+.cartActions {
+    display: flex;
+    align-items: center;
+}
+
+.clearCart {
+    margin-left: auto;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background-color: black;
+    border: none;
+    color: red;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.clearCart:hover {
+    background-color: red;
+    color: black;
+}
+
+.homePage {
+    background-color: black;
+    width: 100vw;
+}
+
+
+/* Loading Page */
+.loading {
+    background-color: black;
+    color: white;
+    font-size: 3rem;
+    display: flex;
+    font-weight: 800;
+    padding-top: 15%;
+    padding-left: 35%;
+}
+
+
+/* Invalid Search/Couldn't Find any Games Matching Search*/
+.emptySearch {
+    background-color: black;
+    color: white;
+    font-size: 3rem;
+    display: flex;
+    font-weight: 800;
+    padding-top: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
