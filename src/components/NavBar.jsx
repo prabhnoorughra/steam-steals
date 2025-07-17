@@ -1,13 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import searchIcon from '../assets/search.svg'
 import cartIcon from '../assets/cart3.svg'
 import steam from '../assets/steamTransparent.png'
 
 
 
-function NavBar({handleSearch, cart, handleRemove, handleHome, clearCart}) {
-    const [query, setQuery] = useState("");
+function NavBar({cart, handleRemove, handleHome, clearCart}) {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [isCartOpen, setCartOpen] = useState(false);
+
+    const paramQuery = searchParams.get("query") ?? "";
+    const [query, setQuery] = useState(paramQuery);
+
+    useEffect(() => {
+        setQuery(paramQuery);
+    }, [paramQuery]);
+
+    const navigate = useNavigate();
 
     let totalPrice = 0;
     for(const game of cart) {
@@ -18,8 +28,8 @@ function NavBar({handleSearch, cart, handleRemove, handleHome, clearCart}) {
 
     function onSubmit(e) {
         e.preventDefault();
-        console.log(query);
-        handleSearch(query);
+        navigate(`/search`);
+        setSearchParams({query: query});
     }
 
     function onClick(obj) {
@@ -36,7 +46,7 @@ function NavBar({handleSearch, cart, handleRemove, handleHome, clearCart}) {
             <div className="navBar">
                 <div className="logo" onClick={onHomeClick}>
                     <img src={steam}></img>
-                    <div className="logoText">Steam Sales!</div>
+                    <div className="logoText">Steam Steals!</div>
                 </div>
                 <form className="searchbar" onSubmit={onSubmit}>
                     <input type="text" value={query} onChange={e => setQuery(e.target.value)}/>

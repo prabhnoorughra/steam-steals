@@ -1,12 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
+import { useOutletContext, useSearchParams } from "react-router-dom";
+import ErrorPage from "./ErrorPage";
 import SideBar from "./components/SideBar";
 import Card from "./components/Card";
 
 
-function SearchPage({handleAddToCart, searchTerm, cart}) {
+function SearchPage() {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [gameResult, setGameResult] = useState([]);
+    const [searchParams] = useSearchParams();
+
+    const {
+        cart,
+        handleAddToCart,
+    } = useOutletContext();
+    const searchTerm = searchParams.get("query") ?? "";
 
     let empty = false;
     if(searchTerm === '' || gameResult.length === 0) {

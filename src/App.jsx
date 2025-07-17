@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import PropTypes from 'prop-types';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import SearchPage from './SearchPage';
 import HomePage from './HomePage';
 import NavBar from './components/NavBar';
@@ -7,15 +7,19 @@ import videoSrc from './assets/batman.mp4'
 import './App.css'
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [cart, setCart] = useState([]);
-  const [searchPage, setSearchPage] = useState(false);
-
-
-  function handleSearch(term) {
-    setSearchTerm(term);
-    setSearchPage(true);
-  }
+  const location = useLocation();
+  const [cart, setCart] = useState(() => {
+    // initialize from localStorage (if present)
+    const json = localStorage.getItem("cart");
+    return json ? JSON.parse(json) : [];
+  });
+  //any time `cart` changes, write it out
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+  //above helps keep the cart data safe when users search for a game with the URl rather then the text input
+  
+  const navigate = useNavigate();
 
   function handleAddToCart(obj) {
     setCart(prev => [...prev, obj]);
@@ -26,35 +30,36 @@ function App() {
   }
 
   function handleHome() {
-    setSearchPage(false);
-    setSearchTerm('');
+    navigate('/');
   }
 
   function clearCart() {
     setCart([]);
   }
 
+  const isHome = location.pathname === '/';
+
   return (
     <>
-      {!searchPage && 
+      {isHome && (
         <video
-                className="bg-video"
-                autoPlay
-                muted
-                loop
-                playsInline
-                src={videoSrc}
+          className="bg-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          src={videoSrc}
         />
-      }
+      )}
       <>
-        <NavBar handleSearch={handleSearch} cart={cart} handleRemove={handleRemoveFromCart}
+        <NavBar cart={cart} handleRemove={handleRemoveFromCart}
             handleHome={handleHome} clearCart={clearCart}></NavBar>
-        {searchPage &&
-              <SearchPage handleAddToCart={handleAddToCart} searchTerm={searchTerm} cart={cart} />
-        }
-        {!searchPage &&
-            <HomePage />
-        }
+        <Outlet
+          context={{
+            cart,
+            handleAddToCart,
+          }}
+        />
       </>
     </>
   )
