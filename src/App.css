@@ -7,6 +7,7 @@
     width: 100vw;
     --bar-color: rgb(255, 255, 255);
     overflow: hidden;
+    background-color: black;
 }
 
 button:hover {
@@ -471,9 +472,33 @@ span.ratingLabel, .cardRatings {
     color: black;
 }
 
+/* Home Page */
+
 .homePage {
-    background-color: black;
-    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 7px;
+    z-index: 2;
+    width: 25vw;
+    height: 25vh;
+    margin-left: 200px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+}
+
+.homePage > h1 {
+    color: rgb(251, 255, 0);
+    text-align: center;
+    font-weight: 800;
+    font-size: 2.2rem;
+}
+
+.homePage > p {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 
