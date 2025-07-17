@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function Card({gameID, name, imageURL, lowestPrice, handleClick, ratingValue, ratingCount, cart}) {
     let added = false;
     for(const game of cart) {
@@ -46,6 +48,22 @@ function Card({gameID, name, imageURL, lowestPrice, handleClick, ratingValue, ra
     );
 }
 
+
+Card.propTypes = {
+    gameID:       PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    name:         PropTypes.string.isRequired,
+    imageURL:     PropTypes.string.isRequired,
+    lowestPrice:  PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    handleClick:  PropTypes.func.isRequired,
+    ratingValue:  PropTypes.number.isRequired,
+    ratingCount:  PropTypes.number.isRequired,
+    cart:         PropTypes.arrayOf(PropTypes.shape({
+        id:       PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+        name:     PropTypes.string.isRequired,
+        price:    PropTypes.number.isRequired,
+        imageURL:   PropTypes.string.isRequired
+    })).isRequired,
+};
 
 
 export default Card

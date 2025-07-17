@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import searchIcon from '../assets/search.svg'
 import cartIcon from '../assets/cart3.svg'
 import steam from '../assets/steamTransparent.png'
+import PropTypes from "prop-types";
 
 
 
@@ -57,7 +58,6 @@ function NavBar({cart, handleRemove, handleHome, clearCart}) {
                 <div className="navButtons">
                     <img src={cartIcon} onClick={() => setCartOpen(true)}/>
                     <div className="itemCount">{cart.length}</div>
-                    {console.log(cart)}
                 </div>
             </div>
 
@@ -105,5 +105,17 @@ function NavBar({cart, handleRemove, handleHome, clearCart}) {
     );
 }
 
+
+NavBar.propTypes = {
+    cart:           PropTypes.arrayOf(PropTypes.shape({
+        id:         PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+        name:       PropTypes.string.isRequired,
+        price:      PropTypes.number.isRequired,
+        imageURL:   PropTypes.string.isRequired
+    })).isRequired,
+    handleRemove:   PropTypes.func.isRequired,
+    handleHome:     PropTypes.func.isRequired,
+    clearCart:      PropTypes.func.isRequired,
+}
 
 export default NavBar

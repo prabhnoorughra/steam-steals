@@ -3,6 +3,7 @@ import ascending from '../assets/graph-up-arrow.svg'
 import descending from '../assets/graph-down-arrow.svg'
 import most from '../assets/chevron-double-up.svg'
 import best from '../assets/star-fill.svg'
+import PropTypes from "prop-types";
 
 function SideBar({ratingValue, ratingCount, priceLtoH, priceHtoL}) {
     const [active, setActive] = useState(null);
@@ -41,6 +42,13 @@ function SideBar({ratingValue, ratingCount, priceLtoH, priceHtoL}) {
             </div>
         </div>
     );
+}
+
+SideBar.propTypes = {
+    ratingValue:   PropTypes.func.isRequired,
+    ratingCount:   PropTypes.func.isRequired,
+    priceLtoH:     PropTypes.func.isRequired,
+    priceHtoL:     PropTypes.func.isRequired,
 }
 
 export default SideBar
