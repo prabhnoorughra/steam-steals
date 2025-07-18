@@ -729,7 +729,7 @@ span.ratingLabel, .cardRatings {
         position: relative;
         height: 20rem;
         width: 90%;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 12rem 8rem;
     }
 
     .cartCard > img {
