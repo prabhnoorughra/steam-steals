@@ -787,11 +787,16 @@ span.ratingLabel, .cardRatings {
         right: 1rem;
     }
 
+    .navButtons {
+        height: 3rem;
+        width: 5rem;
+    }
+
     .itemCount {
         height: 1.2rem;
         width: 1.2rem;
         font-size: 1rem;
-        top: 0;
-        right: 0.2vw;
+        top: 0.3rem;
+        right: 0.7rem;
     }
 }
