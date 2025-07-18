@@ -1,13 +1,16 @@
 #root {
     display: grid;
-    grid-template-rows: 150px 1fr;
-    grid-template-columns: 250px 1fr;
-    --bar-height: 30px;
+    grid-template-rows: 8rem 1fr;
+    grid-template-columns: 0.25fr 1fr;
+    --bar-height: 2rem;
     height: 100vh;
     width: 100vw;
     --bar-color: rgb(255, 255, 255);
     overflow: hidden;
     background-color: black;
+}
+html {
+    font-size: max(1vh, 1vw);
 }
 
 button:hover {
@@ -17,15 +20,22 @@ button:hover {
 .bg-video {
     position: fixed;
     z-index: 1;
+    top: 0;
+    left: 0;
+    /* make it fill the viewport */
+    width: 100vw;
+    height: 100vh;
+    /* crop & scale to cover without letterboxing */
+    object-fit: cover;
 }
 
 /* Nav Bar */
 
 .navBar {
     display: grid;
-    grid-template-rows: 100px;
-    grid-template-columns: 1fr 3fr 1fr;
-    padding-top: 30px;
+    grid-template-rows: 100%;
+    grid-template-columns: 2fr 3fr 2fr;
+    padding-top: 2%;
     justify-items: center;
     align-items: center;
     grid-column: 1 / -1;
@@ -45,12 +55,12 @@ button:hover {
 }
 
 .logo > img {
-    width: 80px;
-    height: auto;
+    width: 5rem;
+    height: 5rem;
 }
 
 .logoText {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
 }
 
 .logo:hover {
@@ -59,7 +69,7 @@ button:hover {
 
 .searchbar {
     position: relative;
-    width: 40%;
+    width: 100%;
     height: var(--bar-height);
     display: flex;
     flex-direction: row;
@@ -74,7 +84,7 @@ button:hover {
     height: 100%;
     border: none;
     background-color: var(--bar-color);
-    padding-left: 10px;
+    padding-left: 2%;
     border-radius: 7px;
 }
 
@@ -89,7 +99,7 @@ button:hover {
 
 .searchbtn > img {
     height: var(--bar-height);
-    padding: 3px;
+    padding: 5%;
 }
 .searchbtn {
     background-color: none;
@@ -104,12 +114,12 @@ button:hover {
 .navButtons {
     z-index: 2;
     position: relative;
-    padding: 10px;
-    padding-right: 20px;
+    padding: 2%;
+    padding-right: 5%;
 }
 
 .navButtons > img {
-    height: 30px;
+    height: 3rem;
     color: white;
 }
 
@@ -120,15 +130,18 @@ button:hover {
 .itemCount {
     position: absolute;
     top: 0px;
-    right: 2px;
+    right: 5%;
     background-color: rgb(247, 255, 5);
     color: black;
     border-radius: 50%;
-    height: 20px;
-    width: 20px;
+    height: 1.5rem;
+    width: 1.5rem;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Side Bar */
@@ -138,21 +151,26 @@ button:hover {
     background-color: black;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    justify-content: flex-start;
+    gap: 7%;
     font-size: 1.2rem;
-    padding-left: 20px;
+    padding-left: 10%;
 }
 
 .sideBar > div:first-child {
     font-size: 2rem;
     font-weight: 800;
-    
+    display: none;
 }
 
 .option {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 5%;
+}
+
+.option > span {
+    font-size: 1.8rem;
 }
 
 .option:hover {
@@ -165,7 +183,7 @@ button:hover {
 
 .option > img {
     display: inline;
-    height: 20px;
+    height: 1.5rem;
 }
 
 
@@ -174,29 +192,28 @@ button:hover {
 .searchResults {
     background-color: rgb(0, 0, 0);
     display: grid;
-    gap: 50px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    padding-top: 30px;
-    padding-left: 30px;
-    padding-bottom: 30px;
+    gap: 5%;
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-bottom: 2%;
     overflow: auto;
-    
 }
 
-.searchResults::-webkit-scrollbar         { width: 12px; }
+.searchResults::-webkit-scrollbar     { width: 0.4vw; }
 .searchResults::-webkit-scrollbar-track   { background: #000000; }
 .searchResults::-webkit-scrollbar-thumb   { background: #888; border-radius: 6px; }
 .searchResults::-webkit-scrollbar-thumb:hover { background: #555; }
 
 .card {
-    height: 700px;
-    width: 300px;
+    height: 43rem;
+    width: 90%;
     background-color: rgb(39, 39, 39);
     overflow: auto;
     scrollbar-width: none;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 445px 65px 50px minmax(125px, 1fr);
+    grid-template-rows: 27rem 5rem 3rem 8rem;
     border-radius: 7px;
 }
 
@@ -209,9 +226,9 @@ button:hover {
 .cardActions {
     display: flex;
     align-items: center;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-top: 1px solid white;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-top: 0.25vh solid white;
 }
 
 .cardPrice {
@@ -223,7 +240,7 @@ button:hover {
 
 .cardAdd, .cardAdded {
     font-size: 1.2rem;
-    width: 150px;
+    width: 50%;
     text-align: start;
 }
 
@@ -256,7 +273,7 @@ button:hover {
     color: white;
     font-weight: 800;
     text-align: center;
-    padding: 15px;
+    padding: 5%;
     padding-top: 0px;
 }
 
@@ -267,8 +284,8 @@ button:hover {
 .cardSteamStats {
     color: white;
     display: flex;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
     font-size: 1.2rem;
 }
 
@@ -319,7 +336,7 @@ span.ratingLabel, .cardRatings {
 
 .cart-modal {
   position: relative;
-  width: 400px;
+  width: 20vw;
   background: #949494;
   box-shadow: 2px 0 6px rgba(0,0,0,0.2);
   height: 100vh;
@@ -337,27 +354,27 @@ span.ratingLabel, .cardRatings {
 }
 
 .fullCart {
-    height: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
 }
 
 .cartTitle {
     font-size: 2.2rem;
-    margin-bottom: 5px;
-    margin-left: 10px;
-    margin-top: 5px;
+    margin-bottom: 2%;
+    margin-left: 4%;
+    margin-top: 2%;
 }
 
 .cartCard {
-    height: 400px;
-    width: 300px;
+    height: 22rem;
+    width: 90%;
     background-color: rgb(0, 123, 255);
     overflow: auto;
     scrollbar-width: none;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 245px 1fr 1.5fr;
+    grid-template-rows: 12rem 1fr 3rem;
     margin-bottom: 15px;
     border: 3px solid black;
     border-radius: 7px;
@@ -366,11 +383,11 @@ span.ratingLabel, .cardRatings {
 
 .cartCardActions {
     display: flex;
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
+    padding-right: 4%;
+    padding-left: 4%;
+    padding-bottom: 4%;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: white;
 }
 
@@ -383,39 +400,45 @@ span.ratingLabel, .cardRatings {
 .cartCardName {
     width: 100%;
     text-align: center;
-    padding: 5px;
+    padding: 2%;
 }
 
 .cartCard > img {
     object-fit: cover;
     width: 100%;
     height: 100%;
-    border-bottom: 1px solid white;
+    border-bottom: 0.25vh solid white;
 }
 
 .cartClose {
     position: absolute;
-    top: 15px;
-    right: 10px;
+    top: 1rem;
+    right: 1rem;
     background-color: rgb(255, 255, 255);
     border-radius: 50%;
     border: none;
-    height: 35px;
-    width: 35px;
-    font-size: 1.6rem;
+    height: 2rem;
+    width: 2rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .removeCard {
     border: none;
     background-color: rgb(0, 0, 0);
     border-radius: 50%;
-    height: 45px;
-    width: 45px;
-    font-size: 1.5rem;
+    height: 2rem;
+    width: 2rem;
+    font-size: 1rem;
     text-shadow: 0px 0px 1px white;
     text-align: center;
-    border: 1px solid white;
+    border: 0.15vh solid white;
     margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .removeCard:hover {
@@ -423,12 +446,13 @@ span.ratingLabel, .cardRatings {
 }
 
 .emptyCart {
-    height: 95%;
+    height: 50%;
     display: flex;
     flex-direction: column;
 }
 
 .emptyText {
+    text-align: center;
     align-self: center;
     margin-top: auto;
     margin-bottom: auto;
@@ -436,19 +460,19 @@ span.ratingLabel, .cardRatings {
     font-weight: 800;
 }
 
-.emptyTotal {
-    margin-top: auto;
-}
-
 .cartActions, .emptyTotal {
     font-weight: 800;
-    margin-left: 15px;
     font-size: 1.8rem;
-    padding-top: 5px;
-    padding-bottom: 10px;
-    padding-right: 15px;
-    margin-bottom: 15px;
     color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.emptyTotal {
+    display: none;
 }
 
 .cartActions {
@@ -457,13 +481,12 @@ span.ratingLabel, .cardRatings {
 }
 
 .clearCart {
-    margin-left: auto;
     font-size: 1.2rem;
     font-weight: 500;
     background-color: black;
     border: none;
     color: red;
-    padding: 5px;
+    padding: 2%;
     border-radius: 8px;
 }
 
@@ -475,30 +498,38 @@ span.ratingLabel, .cardRatings {
 /* Home Page */
 
 .homePage {
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 7px;
-    z-index: 2;
+    z-index: 1;
     width: 25vw;
-    height: 25vh;
-    margin-left: 200px;
-    margin-top: 50px;
+    min-height: 25vh;
+    margin-left: 15vw;
+    margin-top: 3vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 25px;
+    padding: 2%;
 }
 
 .homePage > h1 {
-    color: rgb(251, 255, 0);
+    color: rgb(0, 31, 57);
     text-align: center;
     font-weight: 800;
     font-size: 2.2rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    width: 100%;
+    padding: 2%;
 }
 
 .homePage > p {
     color: rgb(0, 0, 0);
     text-align: center;
     font-size: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    width: 100%;
+    padding: 2%;
 }
 
 
@@ -527,6 +558,10 @@ span.ratingLabel, .cardRatings {
     align-items: center;
 }
 
+.emptySearch > p {
+    text-align: center;
+}
+
 
 /* Router Error */
 .errorPage {
@@ -537,7 +572,7 @@ span.ratingLabel, .cardRatings {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 40%;
+    margin-top: 20vh;
     font-size: 3rem;
 }
 
@@ -551,3 +586,208 @@ span.ratingLabel, .cardRatings {
     color: black;
 }
 
+/* Responsiveness Support for Various devices */
+
+@media (max-width: 1050px), (hover: none) and (pointer:  coarse){
+    html {
+        font-size: max(1vh, 1vw);
+    }
+    #root {
+        grid-template-rows: 8rem auto 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .navBar {
+        grid-template-rows: 100%;
+        grid-template-columns: 2fr 3fr 2fr;
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logoText {
+        display: none;
+    }
+
+    .searchbar {
+        width: 100%;
+        height: 3rem;
+    }
+
+    .searchbar > input {
+        font-size: 2rem;
+    }
+
+    .homePage {
+        width: 60%;
+        margin: auto;
+    }
+
+    .homePage > h1 {
+        font-size: 5rem;
+    }
+
+    .homePage > p {
+        font-size: 3rem;
+    }
+
+    .sideBar {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 5px;
+        padding: 0;
+        padding-left: 10px;
+        padding-bottom: 10px;
+    }
+
+    .option {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 0.2fr 1fr;
+        justify-content: center;
+    }
+
+    .option > span {
+        font-size: 2rem;
+    }
+
+    .option > img {
+        height: 2rem;
+        justify-self: end;
+    }
+
+    .sideBar > div:first-child {
+        display: none;
+    }
+
+    .searchResults {
+        grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr));
+        justify-items: center;
+    }
+
+    .card {
+        height: 40rem;
+        width: 90%;
+        grid-template-rows: 21.333rem 5rem 5.66rem 8rem;
+    }
+
+    .cardSteamStats, .cardActions > * {
+        font-size: 1.7rem;
+    }
+
+    .cardSteamStats {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .cardRating, .cardRatings {
+        margin: 0;
+    }
+
+    .cardActions {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 3fr 1fr;
+    }
+
+    .cardAdd, .cardAdded {
+        width: 100%;
+        text-align: start;
+    }
+
+    .cardName {
+        font-size: 2rem;
+    }
+
+    .cart-modal {
+        height: 70vh;
+        width: 70vw;
+        position: fixed;
+        right: calc(50% - 35vw);
+        top: calc(50% - 35vh);
+        z-index: 3;
+    }
+
+    .cart-modal ul {
+        height: 80%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        padding: 0;
+    }
+
+    .cartCard {
+        position: relative;
+        height: 20rem;
+        width: 90%;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .cartCard > img {
+        position: absolute;
+        z-index: 1;
+        min-height: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+    
+    .removeCard {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        width: auto;
+        font-size: 2rem;
+    }
+
+    .cartCardName, .cartCardActions {
+        z-index: 2;
+        background-color: rgba(0, 60, 116, 0.772);
+        color: rgb(255, 240, 33);
+        font-weight: 800;
+        font-size: 2rem;
+        text-shadow: 0 0 0.4rem rgb(127, 127, 127);
+    }
+
+    .cartCardActions {
+        font-size: 1.8rem;
+    }
+
+    .cartActions {
+        flex-direction: row;
+        font-size: 3rem;
+        padding: 0;
+    }
+
+    .clearCart {
+        font-size: 2.5rem;
+        margin-right: 3%;
+    }
+
+    .emptyText {
+        font-size: 3rem;
+    }
+
+    .cartClose {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .itemCount {
+        height: 2rem;
+        width: 2rem;
+        font-size: 1.8rem;
+    }
+}
