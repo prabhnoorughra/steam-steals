@@ -25,10 +25,8 @@ function SearchPage() {
     useEffect(() => { //searching for items to buy
         if(searchTerm != '') {
             setLoading(true);
-            //const url1 = `https://www.cheapshark.com/api/1.0/games?title=${searchTerm}`;
-            const url1 = `https://www.cheapshark.com/api/1.0/deals?title=${searchTerm}`; //prices and data of game from here
+            const url1 = `https://www.cheapshark.com/api/1.0/deals?title=${searchTerm}`;
             const url2 = `https://api.isthereanydeal.com/games/lookup/v1?key=db2e4e21c81d1d62ccec52ac639f0d22b6d41e7e&appid=`;
-            //url2 used for better images of games, only display games with valid SteamID's
 
             fetch(url1, {mode: "cors"})
             .then((response) => {
