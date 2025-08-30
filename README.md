@@ -3,6 +3,8 @@
 A responsive React application that helps users discover the best Steam game deals across multiple platforms.  
 Built with **React (Vite)** and **vanilla CSS**, the app fetches live pricing data from public APIs and allows users to search, filter, and save games to a personal cart (stored locally).
 
+Link: https://shopping-cart-six-ashen.vercel.app/
+
 ---
 
 ## Features
