@@ -1,12 +1,33 @@
-# React + Vite
+# Steam Steals
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React application that helps users discover the best Steam game deals across multiple platforms.  
+Built with **React (Vite)** and **vanilla CSS**, the app fetches live pricing data from public APIs and allows users to search, filter, and save games to a personal cart (stored locally).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Search Games** – Search for Steam titles with real-time price lookups.  
+- **Filter Results** – Narrow down games by store, price, and discount level.  
+- **Responsive Design** – Fully responsive UI with custom CSS (no frameworks).  
+- **React Router** – Navigate between pages seamlessly (e.g., Home, Deals, Cart).  
+- **Cart with LocalStorage** – Add/remove games from a cart that persists across sessions.  
+- **External APIs** – Integrates with:
+  - [CheapShark API](https://apidocs.cheapshark.com/) for deals & store listings  
+  - [IsThereAnyDeal API](https://isthereanydeal.com/) for information regarding the games 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Tech Stack
+
+- **React (Vite)** – Component-based frontend framework for speed & modularity  
+- **Vanilla CSS** – Custom responsive styling without frameworks  
+- **React Router** – Client-side routing  
+- **LocalStorage** – Persistence for user cart  
+- **Public APIs** – CheapShark + IsThereAnyDeal  
+
+---
+
+## Future Improvements
+- Implement a custom backend to store Cart information and allow users to create/log into accounts
+- Look for deals for games on third-party stores that may have better prices
